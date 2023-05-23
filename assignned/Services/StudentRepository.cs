@@ -43,17 +43,23 @@ public class StudentRepository : IStudentRepository
     }
     public async Task<StudentsDetailDto> UpdateStudentAsync(int id, StudentsDetailDto student)
     {
-        var studentQuery = await GetStudentById(id);
-        if (studentQuery == null)
+        using (StudentRepository entities= new StudentRepository())
         {
-            return studentQuery;
+            var en
         }
 
-        _Context.Entry(studentQuery).CurrentValues.SetValues(student);
-        await _Context.SaveChangesAsync();
+        //var studentQuery = await GetStudentById(id);
+        //if (studentQuery == null)
+        //{
+        //    return studentQuery;
+        //}
 
-        return studentQuery;
+        //_Context.Entry(studentQuery).CurrentValues.SetValues(student);
+        //await _Context.SaveChangesAsync();
+
+        //return studentQuery;
     }
+
 
     public async Task<StudentsDetailDto> DeleteStudentAsync(int id)
     {
